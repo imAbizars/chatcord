@@ -116,7 +116,7 @@ export default function Chat(){
         {
          emojiBtn 
         && 
-          <div className="absolute bottom-10  z-10 ">
+          <div className="absolute bottom-15  z-10 ">
               <EmojiPicker onEmojiClick={(emoji) => addEmoji(emoji)} theme="dark" />
            </div>
           }
