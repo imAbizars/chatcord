@@ -85,18 +85,18 @@ export default function Chat(){
  
 
   return (
-    <div className="w-full h-screen flex flex-col pb-7">
+    <div className="w-full h-screen flex flex-col pb-10">
       {/* {modalState && <FileUpload setState={openModal} file={file} />} */}
 
       {/* Header Channel */}
-      <div className="flex items-center p-4 border-b border-black text-gray-200 pt-10">
+      <div className="flex items-center p-4 border-b border-black text-gray-200 pt-5">
         <BiHash className="text-xl" />
         <h3 className="ml-2 text-lg  font-bold">{channelName}</h3>
       </div>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto p-4">
-        <div className="h-full overflow-y-auto p-5">
+      <div className="flex-1 overflow-y-auto ">
+        <div className="h-full overflow-y-auto ">
           {allMessages.map((message) => (
             <Messages key={message.id} values={message.data} msgId={message.id} />
           ))}
@@ -105,7 +105,7 @@ export default function Chat(){
       </div>
 
       {/* Chat Input */}
-      <div className="p-4 bg-gray-800 flex items-center rounded-lg">
+      <div className=" pb-10 bg-gray-800 flex items-center rounded-lg">
         {/* File Upload */}
        
 

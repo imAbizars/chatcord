@@ -285,7 +285,7 @@ export default function Message({values,msgId}){
           </div>
           
           <div className="absolute right-0 top-0" style={style}>
-          <div className="absolute right-0 pr-[35px] pl-[32px]">
+          <div className="absolute right-0 pr-[20px] pl-[32px]">
             <div className="flex bg-[#2d2e31ba]  pl-[2px] pr-[2px]">
               <IconButton
                 component="span"

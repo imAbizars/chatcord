@@ -55,7 +55,7 @@ function App() {
       ) : (
         <div className="flex">
           <Application uid={user} />
-          <main className="flex-grow bg- h-screen">
+          <main className="flex-grow  h-screen">
             <div className="min-h-[50px]" />
             <Routes>
               <Route path="/" element={<Home />} />
