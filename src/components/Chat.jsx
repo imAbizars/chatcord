@@ -105,7 +105,7 @@ export default function Chat(){
       </div>
 
       {/* Chat Input */}
-      <div className=" pb-10 bg-gray-800 flex items-center rounded-lg">
+      <div className=" pb-20 md:pb-5 bg-gray-800 flex items-center rounded-lg">
         {/* File Upload */}
        
 
