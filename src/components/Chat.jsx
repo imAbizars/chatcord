@@ -1,5 +1,6 @@
 import React, { useEffect, useState,useRef } from "react";
-import { TextField, IconButton } from "@mui/material";
+import {  IconButton,TextField} from "@mui/material";
+// import { Textarea } from "@mantine/core";
 import { useParams } from "react-router-dom";
 import {db} from "../firebase/firebase"
 import { doc, collection, onSnapshot, addDoc, serverTimestamp,query,orderBy} from "firebase/firestore";
@@ -17,6 +18,19 @@ export default function Chat(){
   const [userNewMsg, setUserNewMsg] = useState("");
   const [emojiBtn, setEmojiBtn] = useState(false);
   const messagesEndRef  = useRef(null);
+  const textRef = useRef(null);
+
+  const autoResize = () => {
+    const textarea = textRef.current;
+    textarea.style.height = "auto"; // Reset height
+    textarea.style.height = textarea.scrollHeight + "px"; // Set height to content
+     if (textarea.scrollHeight > 150) {
+         textarea.style.overflowY = "scroll"; // Pakai scroll, bukan auto
+      } else {
+        textarea.style.overflowY = "hidden";
+      }
+  };
+  
   useEffect(() => {
     if (id) {
       const channelRef = doc(db, "channels", id);
@@ -105,7 +119,7 @@ export default function Chat(){
       </div>
 
       {/* Chat Input */}
-      <div className=" pb-20 md:pb-5 bg-gray-800 flex items-center rounded-lg">
+      <div className=" pb-20  md:pb-5 bg-gray-900 flex items-center  rounded-lg">
         {/* File Upload */}
        
 
@@ -122,24 +136,26 @@ export default function Chat(){
           }
 
         {/* Input Chat */}
-        <form className="flex flex-1 " onSubmit={sendMsg}>
+        <form className="flex flex-1 items-center border border-white pb-5" onSubmit={sendMsg}>
           <TextField
-            sx={{  width: "100%",
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": { borderColor: "gray" },
-                    "&:hover fieldset": { borderColor: "white" },
-                    "&.Mui-focused fieldset": { borderColor: "white" },
-                    color: "white"
-               }}}
+            inputRef={textRef}
+          
+            sx={{
+              width:"100%",
+              overflow: "auto",
+              maxHeight: "150px", 
+            }}
             required
-            id="outlined-basic"
-            variant="outlined"
             multiline
-            placeholder="Enter Message"
             rows={1}
-            maxRows={2}
+            maxRow={2}
+            placeholder="Enter Message"
             value={userNewMsg}
-            onChange={(e) => setUserNewMsg(e.target.value)}
+            onChange={(e) => {
+              setUserNewMsg(e.target.value);
+              autoResize(); // Memanggil fungsi autoResize setiap perubahan teks
+            }}
+            onInput={autoResize} 
           />
           <IconButton type="submit">
             <FiSend className="text-gray-400" />
