@@ -1,6 +1,5 @@
 import React, { useEffect, useState,useRef } from "react";
 import {  IconButton,TextField} from "@mui/material";
-// import { Textarea } from "@mantine/core";
 import { useParams } from "react-router-dom";
 import {db} from "../firebase/firebase"
 import { doc, collection, onSnapshot, addDoc, serverTimestamp,query,orderBy} from "firebase/firestore";
@@ -22,10 +21,10 @@ export default function Chat(){
 
   const autoResize = () => {
     const textarea = textRef.current;
-    textarea.style.height = "auto"; // Reset height
-    textarea.style.height = textarea.scrollHeight + "px"; // Set height to content
+    textarea.style.height = "auto"; 
+    textarea.style.height = textarea.scrollHeight + "px"; 
      if (textarea.scrollHeight > 150) {
-         textarea.style.overflowY = "scroll"; // Pakai scroll, bukan auto
+         textarea.style.overflowY = "scroll"; 
       } else {
         textarea.style.overflowY = "hidden";
       }
@@ -119,24 +118,25 @@ export default function Chat(){
       </div>
 
       {/* Chat Input */}
-      <div className=" pb-20  md:pb-5 bg-gray-900 flex items-center  rounded-lg">
-        {/* File Upload */}
-       
-
+      <div className=" pb-20  md:pb-5 bg-[#171c2e] flex items-center  rounded-lg">
         {/* Emoji Picker */}
-        <IconButton onClick={() => setEmojiBtn(!emojiBtn)}>
-          <GrEmoji className="text-gray-400" />
+        <IconButton
+        sx={{
+          paddingBottom:"30px"
+        }} 
+        onClick={() => setEmojiBtn(!emojiBtn)}>
+          <GrEmoji className="text-gray-400 " />
         </IconButton>
         {
          emojiBtn 
         && 
-          <div className="absolute bottom-15  z-10 ">
+          <div className="absolute bottom-15 z-10 ">
               <EmojiPicker onEmojiClick={(emoji) => addEmoji(emoji)} theme="dark" />
            </div>
           }
 
         {/* Input Chat */}
-        <form className="flex flex-1 items-center border border-white pb-5" onSubmit={sendMsg}>
+        <form className="flex flex-1 items-center pb-5 " onSubmit={sendMsg}>
           <TextField
             inputRef={textRef}
           
@@ -153,7 +153,7 @@ export default function Chat(){
             value={userNewMsg}
             onChange={(e) => {
               setUserNewMsg(e.target.value);
-              autoResize(); // Memanggil fungsi autoResize setiap perubahan teks
+              autoResize(); 
             }}
             onInput={autoResize} 
           />
