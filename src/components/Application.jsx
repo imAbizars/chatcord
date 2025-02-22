@@ -51,7 +51,7 @@ const Application = ({ window, uid }) => {
   };
 
   const drawer = (
-    <Box sx={{ width: drawerWidth, bgcolor: "#171c2e", color: "white" }}>
+    <Box sx={{ width: drawerWidth, bgcolor: "#171c2e", color: "white",overflow:"hidden" }}>
       <Toolbar>
         <Typography variant="h5" sx={{ fontWeight: "bold", letterSpacing: 2 }}>CHATCORD</Typography>
       </Toolbar>
@@ -74,13 +74,13 @@ const Application = ({ window, uid }) => {
           </Box>
         </Box>
       )}
-      <Divider sx={{ bgcolor: "gray" }} />
+      <Divider sx={{ bgcolor: "white" }} />
       <Rooms />
     </Box>
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex"  }}>
       <CssBaseline />
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
@@ -121,19 +121,19 @@ const Application = ({ window, uid }) => {
         </Toolbar>
       </AppBar>
 
-      <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
+      <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }}}>
         <Drawer
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{ keepMounted: true }}
-          sx={{ display: { xs: "block", sm: "none" }, "& .MuiDrawer-paper": { width: drawerWidth, bgcolor: "#171c2e" } }}
+          sx={{ display: { xs: "block", sm: "none" }, "& .MuiDrawer-paper": { width: drawerWidth, bgcolor: "#171c2e" }}}
         >
           {drawer}
         </Drawer>
         <Drawer
           variant="permanent"
-          sx={{ display: { xs: "none", sm: "block" }, "& .MuiDrawer-paper": { width: drawerWidth, bgcolor: "#171c2e" } }}
+          sx={{ display: { xs: "none", sm: "block" }, "& .MuiDrawer-paper": { width: drawerWidth, bgcolor: "#171c2e",overflow:"hidden"}}}
           open
         >
           {drawer}

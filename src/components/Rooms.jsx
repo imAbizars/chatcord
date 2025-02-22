@@ -9,7 +9,8 @@ import {
   IconButton, 
   Divider, 
   Snackbar, 
-  Fade
+  Fade,
+  Box
 } from "@mui/material";
 import { ExpandLess, ExpandMore, Add as AddIcon, Close as CloseIcon } from "@mui/icons-material";
 import { IoMdChatboxes } from "react-icons/io";
@@ -77,7 +78,7 @@ function Rooms() {
   };
 
   return (
-    <div>
+    <div  >
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={alert}
@@ -101,7 +102,7 @@ function Rooms() {
       </ListItem>
       <Divider />
 
-      <List component="nav">
+      <List component="nav" sx={{ maxHeight: "300px" }}>
         <ListItem button onClick={handleClick}>
           <ListItemIcon>
             <IconDesign as={IoMdChatboxes} />
@@ -111,19 +112,21 @@ function Rooms() {
         </ListItem>
 
         <Collapse in={open} timeout="auto">
-          <List component="div" disablePadding>
-            {channelList.map((channel) => (
-              <NestedListItem key={channel.id} button onClick={() => goToChannel(channel.id)}>
-                <ListItemIcon sx={{ minWidth: "30px" }}>
-                  <IconDesign as={BiHash} sx={{ color: "#b9bbbe" }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={channel.channelName.length > 12 ? `${channel.channelName.substr(0, 12)}...` : channel.channelName}
-                  sx={{ color: "#dcddde" }}
-                />
-              </NestedListItem>
-            ))}
-          </List>
+          <Box sx={{ maxHeight: "300px", overflowY: "auto", paddingRight: "5px" }}>
+            <List component="div">
+              {channelList.map((channel) => (
+                <NestedListItem key={channel.id} button onClick={() => goToChannel(channel.id)}>
+                  <ListItemIcon sx={{ minWidth: "30px" }}>
+                    <IconDesign as={BiHash} sx={{ color: "#b9bbbe" }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={channel.channelName.length > 12 ? `${channel.channelName.substr(0, 12)}...` : channel.channelName}
+                    sx={{ color: "#dcddde" }}
+                  />
+                </NestedListItem>
+              ))}
+            </List>
+          </Box>
         </Collapse>
       </List>
     </div>

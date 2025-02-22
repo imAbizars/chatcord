@@ -6,7 +6,9 @@ import { doc, collection, onSnapshot, addDoc, serverTimestamp,query,orderBy} fro
 import { BiHash } from "react-icons/bi";
 import { FiSend } from "react-icons/fi";
 import { GrEmoji } from "react-icons/gr";
+import ScrollToBottom from "react-scroll-to-bottom";
 import EmojiPicker from "emoji-picker-react";
+import { FaArrowDown } from "react-icons/fa";
 import Messages from "./Message";
 
 
@@ -16,9 +18,20 @@ export default function Chat(){
   const [channelName, setChannelName] = useState("");
   const [userNewMsg, setUserNewMsg] = useState("");
   const [emojiBtn, setEmojiBtn] = useState(false);
-  const messagesEndRef  = useRef(null);
   const textRef = useRef(null);
+  const scrollRef = useRef(null);
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [allMessages]);
+
+  const handleScroll = (e) => {
+    const { scrollTop, clientHeight, scrollHeight } = e.target;
+    setShowScrollButton(scrollTop + clientHeight < scrollHeight - 50);
+  };
   const autoResize = () => {
     const textarea = textRef.current;
     textarea.style.height = "auto"; 
@@ -98,71 +111,74 @@ export default function Chat(){
  
 
   return (
-    <div className="w-full h-screen flex flex-col pb-10">
-      {/* {modalState && <FileUpload setState={openModal} file={file} />} */}
-
-      {/* Header Channel */}
-      <div className="flex items-center p-4 border-b border-black text-gray-200 pt-5">
-        <BiHash className="text-xl" />
-        <h3 className="ml-2 text-lg  font-bold">{channelName}</h3>
-      </div>
-
-      {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto ">
-        <div className="h-full overflow-y-auto ">
-          {allMessages.map((message) => (
-            <Messages key={message.id} values={message.data} msgId={message.id} />
-          ))}
-          <div ref={messagesEndRef} />
-        </div>
-      </div>
-
-      {/* Chat Input */}
-      <div className=" pb-20  md:pb-5 bg-[#171c2e] flex items-center  rounded-lg">
-        {/* Emoji Picker */}
-        <IconButton
-        sx={{
-          paddingBottom:"30px"
-        }} 
-        onClick={() => setEmojiBtn(!emojiBtn)}>
-          <GrEmoji className="text-gray-400 " />
-        </IconButton>
-        {
-         emojiBtn 
-        && 
-          <div className="absolute bottom-15 z-10 ">
-              <EmojiPicker onEmojiClick={(emoji) => addEmoji(emoji)} theme="dark" />
-           </div>
-          }
-
-        {/* Input Chat */}
-        <form className="flex flex-1 items-center pb-5 " onSubmit={sendMsg}>
-          <TextField
-            inputRef={textRef}
-          
-            sx={{
-              width:"100%",
-              overflow: "auto",
-              maxHeight: "150px", 
-            }}
-            required
-            multiline
-            rows={1}
-            maxRow={2}
-            placeholder="Enter Message"
-            value={userNewMsg}
-            onChange={(e) => {
-              setUserNewMsg(e.target.value);
-              autoResize(); 
-            }}
-            onInput={autoResize} 
-          />
-          <IconButton type="submit">
-            <FiSend className="text-gray-400" />
-          </IconButton>
-        </form>
-      </div>
+    <div className="w-full h-screen flex flex-col">
+    {/* Header Channel */}
+    <div className="flex items-center p-4  text-gray-200 pt-5">
+      <BiHash className="text-xl" />
+      <h3 className="ml-2 text-lg font-bold">{channelName}</h3>
     </div>
+  
+    {/* Chat Messages */}
+    <div className="flex-1 overflow-y-auto min-h-0 relative" onScroll={handleScroll}>
+      <ScrollToBottom className="h-full border border-white" checkInterval={0} >
+        {allMessages.map((message) => (
+          <Messages key={message.id} values={message.data} msgId={message.id} />
+        ))}
+        <div ref={scrollRef} />
+      </ScrollToBottom>
+  
+      {/* Tombol Jump to Bottom dengan React Icons */}
+      {showScrollButton && (
+        <button
+          className="fixed bottom-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-md hover:bg-blue-700 transition flex items-center justify-center"
+          onClick={() => scrollRef.current.scrollIntoView({ behavior: "smooth", block: "end" })}
+        >
+          <FaArrowDown size={20} />
+        </button>
+      )}
+    </div>
+  
+    {/* Chat Input (Tetap di Bawah) */}
+    <div className="w-full bg-[#171c2e] flex items-center p-4 ">
+      {/* Emoji Picker */}
+      <IconButton onClick={() => setEmojiBtn(!emojiBtn)}>
+        <GrEmoji className="text-gray-400" />
+      </IconButton>
+  
+      {emojiBtn && (
+        <div className="absolute bottom-16 left-4 z-10">
+          <EmojiPicker onEmojiClick={(emoji) => addEmoji(emoji)} theme="dark" />
+        </div>
+      )}
+  
+      {/* Input Chat */}
+      <form className="flex flex-1 items-center space-x-2" onSubmit={sendMsg}>
+        <TextField
+          inputRef={textRef}
+          sx={{
+            width: "100%",
+            overflow: "auto",
+            maxHeight: "150px",
+          }}
+          required
+          multiline
+          minRows={1} 
+          maxRows={2}
+          placeholder="Enter Message"
+          value={userNewMsg}
+          onChange={(e) => {
+            setUserNewMsg(e.target.value);
+            autoResize();
+          }}
+          onInput={autoResize}
+        />
+        <IconButton type="submit">
+          <FiSend className="text-gray-400" />
+        </IconButton>
+      </form>
+    </div>
+  </div>
+  
   );
 };
 
