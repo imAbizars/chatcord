@@ -1,6 +1,6 @@
 # ChatCord
 
-ChatCord adalah aplikasi chat real-time berbasis Node.js dan Socket.io. Aplikasi ini memungkinkan pengguna untuk bergabung dalam ruang obrolan dan berkomunikasi satu sama lain secara langsung.
+ChatCord adalah aplikasi chat real-time berbasis Firebase dan Reactjs Aplikasi ini memungkinkan pengguna untuk bergabung dalam ruang obrolan dan berkomunikasi satu sama lain secara langsung.
 
 ## Fitur
 - Obrolan real-time menggunakan Database Realtime dari FireBase
