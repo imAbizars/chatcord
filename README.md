@@ -9,7 +9,9 @@ ChatCord adalah aplikasi chat real-time berbasis Node.js dan Socket.io. Aplikasi
 
 ## Teknologi yang Digunakan
 - **FireBase**
-- **ReactJS** ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+- ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+- **React+Vite**
+- ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 - **MUI Material**
 - **Tailwind**
 
@@ -31,7 +33,9 @@ ChatCord adalah aplikasi chat real-time berbasis Node.js dan Socket.io. Aplikasi
    npm start
    ```
 5. Akses aplikasi di browser melalui `http://localhost:3000`
-
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="40" height="40"/>  
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" alt="Vite" width="40" height="40"/>
+  
 
 
 ## Kontribusi
