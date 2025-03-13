@@ -9,7 +9,7 @@ ChatCord adalah aplikasi chat real-time berbasis Node.js dan Socket.io. Aplikasi
 
 ## Teknologi yang Digunakan
 - **FireBase**
-- **ReactJS**
+- **ReactJS** ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 - **MUI Material**
 - **Tailwind**
 
