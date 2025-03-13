@@ -3,7 +3,7 @@
 ChatCord adalah aplikasi chat real-time berbasis Node.js dan Socket.io. Aplikasi ini memungkinkan pengguna untuk bergabung dalam ruang obrolan dan berkomunikasi satu sama lain secara langsung.
 
 ## Fitur
-- Obrolan real-time menggunakan WebSockets (Socket.io)
+- Obrolan real-time menggunakan Database RealTime dari FireBase
 - Sistem ruang obrolan (chat room)
 - Nama pengguna yang dapat dikustomisasi
 
