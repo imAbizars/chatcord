@@ -1,12 +1,51 @@
-# CHATCORD 
+# ChatCord
 
-=======
-# React + Vite
+ChatCord adalah aplikasi chat real-time berbasis Node.js dan Socket.io. Aplikasi ini memungkinkan pengguna untuk bergabung dalam ruang obrolan dan berkomunikasi satu sama lain secara langsung.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Fitur
+- Obrolan real-time menggunakan WebSockets (Socket.io)
+- Sistem ruang obrolan (chat room)
+- Nama pengguna yang dapat dikustomisasi
+- Notifikasi pengguna bergabung atau keluar
 
-Currently, two official plugins are available:
+## Teknologi yang Digunakan
+- **Node.js** - Backend server
+- **Express.js** - Framework untuk routing dan middleware
+- **Socket.io** - Real-time communication
+- **HTML, CSS, JavaScript** - Frontend sederhana
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
->>>>>>> 57ca6ad (need to upload file image)
+## Instalasi
+1. Clone repositori ini:
+   ```sh
+   git clone https://github.com/imAbizars/chatcord.git
+   ```
+2. Masuk ke direktori proyek:
+   ```sh
+   cd chatcord
+   ```
+3. Instal dependensi:
+   ```sh
+   npm install
+   ```
+4. Jalankan server:
+   ```sh
+   npm start
+   ```
+5. Akses aplikasi di browser melalui `http://localhost:3000`
+
+## Struktur Proyek
+```
+chatcord/
+├── public/        # File frontend (HTML, CSS, JS)
+├── utils/         # Utility functions
+├── views/         # Template engine (jika ada)
+├── server.js      # Server utama
+└── package.json   # Konfigurasi npm
+```
+
+## Kontribusi
+Jika ingin berkontribusi, silakan fork repositori ini dan buat pull request dengan perubahan yang diusulkan.
+
+## Lisensi
+Proyek ini menggunakan lisensi MIT. Lihat file `LICENSE` untuk detailnya.
+
