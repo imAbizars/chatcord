@@ -32,15 +32,7 @@ ChatCord adalah aplikasi chat real-time berbasis Node.js dan Socket.io. Aplikasi
    ```
 5. Akses aplikasi di browser melalui `http://localhost:3000`
 
-## Struktur Proyek
-```
-chatcord/
-├── public/        # File frontend (HTML, CSS, JS)
-├── utils/         # Utility functions
-├── views/         # Template engine (jika ada)
-├── server.js      # Server utama
-└── package.json   # Konfigurasi npm
-```
+
 
 ## Kontribusi
 Jika ingin berkontribusi, silakan fork repositori ini dan buat pull request dengan perubahan yang diusulkan.
