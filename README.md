@@ -42,8 +42,7 @@ ChatCord adalah aplikasi chat real-time berbasis Node.js dan Socket.io. Aplikasi
    npm start
    ```
 5. Akses aplikasi di browser melalui `http://localhost:3000`
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="40" height="40"/>  
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" alt="Vite" width="40" height="40"/>
+
   
 
 
