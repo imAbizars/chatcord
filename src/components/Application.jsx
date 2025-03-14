@@ -57,8 +57,8 @@ const Application = ({ window, uid }) => {
       </Toolbar>
       <Divider sx={{ bgcolor: "gray" }} />
       {userDetails && (
-        <Box display="grid" container alignItems="center" spacing={2} sx={{ py: 2, pl:2 }}>
-          <Box display="grid" item>
+        <Box display="grid"  alignItems="center" spacing={2} sx={{ py: 2, pl:2 }}>
+          <Box display="grid" >
             <Badge
               overlap="circular"
               badgeContent=" "
@@ -68,7 +68,7 @@ const Application = ({ window, uid }) => {
               <Avatar sx={{ bgcolor: deepPurple[500] }} src={userDetails.photoURL} />
             </Badge>
           </Box>
-          <Box display="grid" item>
+          <Box display="grid" >
             <Typography variant="h6">{userDetails.displayName}</Typography>
             <Typography variant="body2" color="gray">{userDetails.email}</Typography>
           </Box>

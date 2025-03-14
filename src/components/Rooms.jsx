@@ -103,7 +103,7 @@ function Rooms() {
       <Divider />
 
       <List component="nav" sx={{ maxHeight: "300px" }}>
-        <ListItem button onClick={handleClick}>
+        <ListItem  onClick={handleClick}>
           <ListItemIcon>
             <IconDesign as={IoMdChatboxes} />
           </ListItemIcon>
@@ -115,14 +115,14 @@ function Rooms() {
           <Box sx={{ maxHeight: "300px", overflowY: "auto", paddingRight: "5px" }}>
             <List component="div">
               {channelList.map((channel) => (
-                <NestedListItem key={channel.id} button onClick={() => goToChannel(channel.id)}>
+                <NestedListItem key={channel.id} onClick={() => goToChannel(channel.id)}>
                   <ListItemIcon sx={{ minWidth: "30px" }}>
                     <IconDesign as={BiHash} sx={{ color: "#b9bbbe" }} />
                   </ListItemIcon>
                   <ListItemText
                     primary={channel.channelName.length > 12 ? `${channel.channelName.substr(0, 12)}...` : channel.channelName}
                     sx={{ color: "#dcddde" }}
-                  />
+                  />  
                 </NestedListItem>
               ))}
             </List>

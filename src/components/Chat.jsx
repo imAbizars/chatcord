@@ -120,22 +120,14 @@ export default function Chat(){
   
     {/* Chat Messages */}
     <div className="flex-1 overflow-y-auto min-h-0 relative" onScroll={handleScroll}>
-      <ScrollToBottom className="h-full border border-white" checkInterval={0} >
+      <ScrollToBottom className="h-full" checkInterval={0} >
         {allMessages.map((message) => (
           <Messages key={message.id} values={message.data} msgId={message.id} />
         ))}
         <div ref={scrollRef} />
       </ScrollToBottom>
   
-      {/* Tombol Jump to Bottom dengan React Icons */}
-      {showScrollButton && (
-        <button
-          className="fixed bottom-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-md hover:bg-blue-700 transition flex items-center justify-center"
-          onClick={() => scrollRef.current.scrollIntoView({ behavior: "smooth", block: "end" })}
-        >
-          <FaArrowDown size={20} />
-        </button>
-      )}
+      
     </div>
   
     {/* Chat Input (Tetap di Bawah) */}

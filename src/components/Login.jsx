@@ -3,12 +3,12 @@ import { Container, Typography, Button } from "@mui/material";
 import logo from "../assets/logochatcord.png";
 import { FcGoogle } from "react-icons/fc";
 import { auth, provider } from "../firebase/firebase";
-import { signInWithPopup } from "firebase/auth"; 
-
+import { signInWithPopup} from "firebase/auth"; 
+import { signInWithRedirect } from "firebase/auth";
 export default function Login() {
     const login = async () => { 
         try {
-            await signInWithPopup(auth, provider);  
+            await signInWithPopup(auth, provider);
             console.log("Success");
         } catch (err) {
             console.log(err);
